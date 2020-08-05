@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>同名验证</title>
+<style type="text/css">
+.repeated{
+	color:red
+}
+</style>
+
+<script type="text/javascript">
+function check(){
+	// 创建 XMLHttpRequest 对象
+	var xhr = new XMLHttpRequest(); // 现行的 js 通用创建 对象的方式     
+	
+	// xmlhttp = new ActiveXObject("Microsoft.XMLHTTP");  低版本的IE方式不同
+	// 回调函数
+	xhr.onreadystatechange = function(){
+		 console.info(xhr.readyState);  // readyState 请求状态值
+		if(xhr.readyState == 4 && xhr.status==200){
+			// 处理结果  ?????
+			console.info("处理结果"); 
+			
+			/**	接收服务器返回的结果
+				xhr.responseXML;  // xml格式的结果
+				xhr.responseText; // 文本格式的结果
+			*/
+			alert(xhr.responseText);
+		}
+	};
+	
+	var name = document.getElementById("txt1").value;
+	// 开启连接
+	xhr.open("get","../checkName.s?nm=" + name     ,   true   ); //
+	// 发送请求
+	xhr.send( /* null */ ); // post方法的参数 写在 里面
+	
+	alert( " 这是  send 后 的 alert" );
+	
+	// 同步: 先看到 服务器的响应结果,  再执行 send 后面的方法
+	// 异步: 不会等到服务器给我结果,  直接执行send 后的方法
+	
+	
+}
+
+</script>
+</head>
+<body>
+	<h3>请在下面的输入框中键入英文姓氏：(已注册的用户名: Abe , Abraham , Acheson)</h3>
+	<!--http://localhost/C85-S2-Ply-web/checkName.s?nm= 
+		http://localhost/checkName.s?nm= 
+		服务器端的 根目录 是工程的根目录   ==>  WebContent/
+		浏览器端的 根目录 是服务器的的根目录
+	   -->
+	<form action="../checkName.s" id="app">
+		姓氏：
+		<!-- name="" 用于设置 请求参数名  -->
+		<input type="text" id="txt1" name="nm"/>
+		<span id="checkMsg"></span><br>
+		<!-- type="button" 普通按钮 -->
+		<button onclick="check()" type="button">验证</button>
+	</form>
+</body>
+</html>

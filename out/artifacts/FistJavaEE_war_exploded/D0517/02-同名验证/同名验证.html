@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="UTF-8">
+	<title>同名验证</title>
+	<style type="text/css">
+		.repeated{
+			color:red
+		}
+	</style>
+</head>
+<body>
+<h3>请在下面的输入框中键入英文姓氏：(已注册的用户名: Abe , Abraham , Acheson)</h3>
+<form action="../checkName.s" id="app">
+	姓氏：
+	<!-- name="" 用于设置 请求参数名 -->
+	<input type="text" id="txt1" name="nm"/>
+	<span id="checkMsg"></span><br>
+	<button>验证</button>
+</form>
+</body>
+</html>

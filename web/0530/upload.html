@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script type="text/javascript" src="ajax.js"></script>
+    <script type="text/javascript">
+        function upload() {
+            var fd  = new FormData(f1);
+            var url = "uploadSsq.do";
+            post(upload(),fd,function (text) {
+                alert(text);
+            });
+        }
+    </script>
+</head>
+<body>
+
+<form id="f1">
+    <input type="file" name="file">
+    <button type="button" onclick="upload()"> 上传 </button>
+</form>
+</body>
+</html>
